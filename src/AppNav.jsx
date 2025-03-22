@@ -22,7 +22,8 @@ function AppNav() {
           display: 'flex',
           gap: '20px',
           marginLeft: 'auto',
-        }}>
+        }}
+      >
         <Link to="/login">Login</Link>
         <Link to="/register">Sign Up</Link>
         <UserInfo />
