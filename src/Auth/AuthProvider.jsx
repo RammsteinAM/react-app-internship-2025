@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
-import AuthContext from './AuthContext';
 import { useNavigate } from 'react-router';
+import { userCredentials } from '../constants/login';
+import bcrypt from 'bcryptjs';
+import { AuthContext } from './authContext';
 const LOGIN_LOCAL_STORAGE_KEY = 'myReactAppLogin';
 
-function checkLogin() {
-  const loginInfo = window.localStorage.getItem(LOGIN_LOCAL_STORAGE_KEY);
+const LOGIN_ERROR_MESSAGE = 'Invalid username or password';
 
-  return loginInfo === '1234';
+function checkLogin() {
+  const loggedInUserId = window.localStorage.getItem(LOGIN_LOCAL_STORAGE_KEY);
+
+  const user = userCredentials.find(user => user.id === loggedInUserId);
+
+  return user ? { username: user.username, name: user.name } : null;
 }
 
 function signOut() {
@@ -14,12 +20,13 @@ function signOut() {
 }
 
 function useProvideAuth() {
-  const [isLoggedIn, setIsLoggedIn] = useState(checkLogin());
+  const [userData, setUserData] = useState(checkLogin());
+  const [, setSomething] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
     const eventListener = () => {
-      setIsLoggedIn(checkLogin());
+      setUserData(checkLogin());
     };
 
     window.addEventListener('storage', eventListener);
@@ -30,17 +37,31 @@ function useProvideAuth() {
   }, []);
 
   const handleSignOut = () => {
-    setIsLoggedIn(false);
+    setUserData(false);
     signOut();
   };
 
-  const login = () => {
-    window.localStorage.setItem(LOGIN_LOCAL_STORAGE_KEY, '1234');
-    setIsLoggedIn(true);
-    navigate('/');
+  const login = ({ username, password }) => {
+    const user = userCredentials.find(user => user.username === username);
+
+    if (!user) {
+      return { hasError: true, message: LOGIN_ERROR_MESSAGE };
+    }
+
+    const doesPasswordMatch = bcrypt.compareSync(password, user.password);
+
+    if (doesPasswordMatch) {
+      window.localStorage.setItem(LOGIN_LOCAL_STORAGE_KEY, user.id);
+      setUserData({ username: user.username, name: user.name });
+      navigate('/');
+
+      return;
+    }
+
+    return { hasError: true, message: LOGIN_ERROR_MESSAGE };
   };
 
-  return { isLoggedIn, signOut: handleSignOut, login };
+  return { userData, signOut: handleSignOut, login, setSomething };
 }
 
 export default function AuthProvider({ children }) {
@@ -48,15 +69,3 @@ export default function AuthProvider({ children }) {
 
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
-
-// function MyComponent() {
-//   const navigate = useNavigate();
-
-//   const someAction = () => {
-//     someAsyncFcuntion().then(() => {
-//       navigate('/');
-//     });
-//   };
-
-//   return <>...</>;
-// }

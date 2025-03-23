@@ -1,8 +1,11 @@
 import { Link, NavLink } from 'react-router';
 import UserInfo from './UserInfo';
+import { useAuth } from './Auth/authContext';
 // import './App.css';
 
 function AppNav() {
+  const { userData } = useAuth();
+
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>
       <nav>
@@ -18,14 +21,19 @@ function AppNav() {
       </nav>
       <div
         style={{
-          alignSelf: 'flex-start',
+          alignSelf: 'center',
           display: 'flex',
           gap: '20px',
+          marginInlineEnd: '20px',
           marginLeft: 'auto',
         }}
       >
-        <Link to="/login">Login</Link>
-        <Link to="/register">Sign Up</Link>
+        {!userData && (
+          <>
+            <Link to="/register">Sign Up</Link>
+            <Link to="/login">Login</Link>
+          </>
+        )}
         <UserInfo />
       </div>
     </div>

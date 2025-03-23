@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router';
-import { useAuth } from './Auth/useAuth';
+import { useAuth } from './Auth/authContext';
 
 function AuthLayout() {
-  const { isLoggedIn } = useAuth();
+  const { userData } = useAuth();
 
-  return <>{isLoggedIn ? <Redirection /> : <Outlet />}</>;
+  return <>{userData ? <Redirection /> : <Outlet />}</>;
 }
 
 export default AuthLayout;
@@ -17,6 +17,7 @@ function Redirection() {
   useEffect(() => {
     if (seconds > 0) {
       const timer = setTimeout(() => setSeconds(seconds - 1), 1000);
+
       return () => clearTimeout(timer);
     } else {
       navigate('/');
@@ -34,11 +35,3 @@ function Redirection() {
     </div>
   ) : null;
 }
-
-// function AuthLayout() {
-//   return (
-//     <div>
-//       <Outlet />
-//     </div>
-//   );
-// }

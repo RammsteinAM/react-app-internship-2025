@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
-import { useAuth } from './Auth/useAuth';
+import { useAuth } from './Auth/authContext';
 
 export default function UserInfo() {
-  const { isLoggedIn, signOut } = useAuth();
+  const { userData, signOut } = useAuth();
   const navigate = useNavigate();
 
   const handleSignOut = () => {
@@ -10,5 +10,12 @@ export default function UserInfo() {
     navigate('/');
   };
 
-  return isLoggedIn ? <button onClick={handleSignOut}>Sign Out</button> : null;
+  return userData ? (
+    <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+      <div>
+        Welcome, <b>{userData.name}</b>!
+      </div>
+      <button onClick={handleSignOut}>Sign Out</button>
+    </div>
+  ) : null;
 }
