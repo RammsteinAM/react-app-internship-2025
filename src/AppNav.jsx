@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router';
 import UserInfo from './UserInfo';
+import CartButton from './components/CartButton';
 import { useAuth } from './Auth/authContext';
 // import './App.css';
 
@@ -35,6 +36,7 @@ function AppNav() {
           </>
         )}
         <UserInfo />
+        <CartButton />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import AuthLayout from './AuthLayout';
 import Login from './components/Login';
 import Artists from './components/Artists';
 import Artist from './components/Artist';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="cart" element={<Cart />} />
 
         <Route path="artists">
           <Route index element={<Artists />} />

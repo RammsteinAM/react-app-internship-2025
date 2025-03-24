@@ -37,3 +37,17 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.album-list-item {
+  border-radius: .5rem;
+}
+
+.album-list-item:hover {
+  background-color: #ffffff08;
+}
+
+.album-list-item-row {
+  display: grid;
+  grid-template-columns: 20vw 5fr 1fr;
+  align-items: center;
+}
