@@ -48,6 +48,10 @@
 
 .album-list-item-row {
   display: grid;
-  grid-template-columns: 20vw 5fr 1fr;
+  grid-template-columns: 20vw 1fr 1fr;
   align-items: center;
+}
+
+.album-list-item-row :last-child {
+  justify-self: flex-end;
 }

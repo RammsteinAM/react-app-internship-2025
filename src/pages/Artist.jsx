@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useParams } from 'react-router';
 import { artists } from '../constants/artists';
-import { useAuth } from '../Auth/authContext';
+import { useAuth } from '../context/authContext';
 import useCartStore from '../store/cartStore';
 
 function Artist() {

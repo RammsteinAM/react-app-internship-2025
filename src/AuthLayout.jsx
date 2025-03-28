@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router';
-import { useAuth } from './Auth/authContext';
+import { useAuth } from './context/authContext';
 
 function AuthLayout() {
   const { userData } = useAuth();

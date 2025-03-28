@@ -1,8 +1,7 @@
 import { Link, NavLink } from 'react-router';
-import UserInfo from './UserInfo';
-import CartButton from './components/CartButton';
-import { useAuth } from './Auth/authContext';
-// import './App.css';
+import UserInfo from '../UserInfo';
+import CartButton from '../components/CartButton';
+import { useAuth } from '../context/authContext';
 
 function AppNav() {
   const { userData } = useAuth();

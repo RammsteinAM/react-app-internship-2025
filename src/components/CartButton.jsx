@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { useAuth } from '../Auth/authContext';
+import { useAuth } from '../context/authContext';
 import CartIcon from './CartIcon';
 import CartIconBadge from './CartIconBadge';
 import './index.css';

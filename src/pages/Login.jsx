@@ -1,6 +1,5 @@
 import { useRef } from 'react';
-import { useAuth } from '../Auth/authContext';
-import './index.css';
+import { useAuth } from '../context/authContext';
 
 function Login() {
   const formRef = useRef();
