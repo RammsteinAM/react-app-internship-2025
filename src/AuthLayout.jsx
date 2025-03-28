@@ -13,6 +13,7 @@ export default AuthLayout;
 function Redirection() {
   const [seconds, setSeconds] = useState(5);
   const navigate = useNavigate();
+  const { userData } = useAuth()
 
   useEffect(() => {
     if (seconds > 0) {
@@ -31,7 +32,7 @@ function Redirection() {
 
   return seconds > 0 ? (
     <div>
-      You are already logged in. You'll be redirected {secondsLeftString}.
+      Dear <b>{userData.name}</b>, you are already logged in. You'll be redirected {secondsLeftString}.
     </div>
   ) : null;
 }
