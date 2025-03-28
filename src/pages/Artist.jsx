@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useParams } from 'react-router';
 import { artists } from '../constants/artists';
 import { useAuth } from '../context/authContext';
@@ -10,10 +9,6 @@ function Artist() {
   const addItem = useCartStore(state => state.addItem);
 
   const { setSomething } = useAuth();
-  // let [searchParams] = useSearchParams();
-  // const location = useLocation();
-  // console.log('🫠 > Artist > location:', location);
-  // console.log('🫠 > Artist > searchParams:', searchParams.get('kekw'));
 
   const artist = artists.find(artist => artist.link === params.artist);
 
@@ -27,7 +22,7 @@ function Artist() {
       <ol>
         {artist.albums.map(album => {
           return (
-            <li key={album} className="album-list-item">
+            <li key={album.id} className="album-list-item">
               <div className="album-list-item-row">
                 <span>{album.name}</span>
                 <span
