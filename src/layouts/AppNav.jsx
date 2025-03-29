@@ -1,10 +1,10 @@
 import { Link, NavLink } from 'react-router';
-import UserInfo from '../UserInfo';
+import UserInfo from './UserInfo';
 import CartButton from '../components/CartButton';
-import { useAuth } from '../context/authContext';
+import { useAuthContext } from '../context/authContext';
 
 function AppNav() {
-  const { userData } = useAuth();
+  const { userData } = useAuthContext();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'row' }}>

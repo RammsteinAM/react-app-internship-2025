@@ -18,3 +18,6 @@ export const userCredentials = [
     name: 'Guest',
   },
 ];
+
+export const LOGIN_LOCAL_STORAGE_KEY = 'myReactAppLogin';
+export const LOGIN_ERROR_MESSAGE = 'Invalid username or password';

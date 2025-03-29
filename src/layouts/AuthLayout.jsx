@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Outlet, useNavigate } from 'react-router';
-import { useAuth } from './context/authContext';
+import { useAuthContext } from '../context/authContext';
 
 function AuthLayout() {
-  const { userData } = useAuth();
+  const { userData } = useAuthContext();
 
   return <>{userData ? <Redirection /> : <Outlet />}</>;
 }
@@ -13,7 +13,7 @@ export default AuthLayout;
 function Redirection() {
   const [seconds, setSeconds] = useState(5);
   const navigate = useNavigate();
-  const { userData } = useAuth()
+  const { userData } = useAuthContext();
 
   useEffect(() => {
     if (seconds > 0) {
@@ -32,7 +32,8 @@ function Redirection() {
 
   return seconds > 0 ? (
     <div>
-      Dear <b>{userData.name}</b>, you are already logged in. You'll be redirected {secondsLeftString}.
+      Dear <b>{userData.name}</b>, you are already logged in. You'll be
+      redirected {secondsLeftString}.
     </div>
   ) : null;
 }

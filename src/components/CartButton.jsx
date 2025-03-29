@@ -1,19 +1,12 @@
 import { useNavigate } from 'react-router';
-import { useAuth } from '../context/authContext';
 import CartIcon from './CartIcon';
 import CartIconBadge from './CartIconBadge';
 import './index.css';
 import useCartStore from '../store/cartStore';
 
 export default function CartButton() {
-  const { userData, signOut } = useAuth();
   const items = useCartStore(state => state.items);
   const navigate = useNavigate();
-
-  const handleSignOut = () => {
-    signOut();
-    navigate('/');
-  };
 
   return (
     <button

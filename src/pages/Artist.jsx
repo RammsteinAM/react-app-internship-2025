@@ -1,14 +1,11 @@
 import { useParams } from 'react-router';
 import { artists } from '../constants/artists';
-import { useAuth } from '../context/authContext';
 import useCartStore from '../store/cartStore';
 
 function Artist() {
   let params = useParams();
   const items = useCartStore(state => state.items);
   const addItem = useCartStore(state => state.addItem);
-
-  const { setSomething } = useAuth();
 
   const artist = artists.find(artist => artist.link === params.artist);
 
@@ -57,13 +54,6 @@ function Artist() {
           );
         })}
       </ol>
-      {/* <button
-        onClick={() => {
-          setSomething(Math.random());
-        }}
-      >
-        Change something in the context
-      </button> */}
     </>
   );
 }

@@ -55,3 +55,14 @@
 .album-list-item-row :last-child {
   justify-self: flex-end;
 }
+
+.cart-icon-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: red;
+  color: white;
+  border-radius: 2rem;
+  padding: 2px 6px;
+  font-size: 12px;
+}

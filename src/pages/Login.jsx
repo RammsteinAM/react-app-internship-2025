@@ -1,15 +1,15 @@
 import { useRef } from 'react';
-import { useAuth } from '../context/authContext';
+import { useAuthContext } from '../context/authContext';
 
 function Login() {
   const formRef = useRef();
-  const { login } = useAuth();
+  const { signIn } = useAuthContext();
 
   const handleSubmit = e => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    const loginResponse = login(data);
+    const loginResponse = signIn(data);
 
     if (loginResponse.hasError) {
       alert(loginResponse.message);

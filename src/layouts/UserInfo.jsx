@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
-import { useAuth } from './context/authContext';
+import { useAuthContext } from '../context/authContext';
 
 export default function UserInfo() {
-  const { userData, signOut } = useAuth();
+  const { userData, signOut } = useAuthContext();
   const navigate = useNavigate();
 
   const handleSignOut = () => {

@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router';
-import AuthLayout from '../AuthLayout';
+import AuthLayout from './AuthLayout';
 import Login from '../pages/Login';
 import Artists from '../pages/Artists';
 import Artist from '../pages/Artist';
