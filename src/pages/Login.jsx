@@ -1,11 +1,11 @@
 import { useRef } from 'react';
-import { useAuthContext } from '../context/authContext';
+import { useAuthContext } from '../context/AuthContext';
 
 function Login() {
   const formRef = useRef();
   const { signIn } = useAuthContext();
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());

@@ -6,7 +6,7 @@ function Artists() {
     <>
       <h3>Artists</h3>
       <ul>
-        {artists.map(city => {
+        {artists.map((city) => {
           return (
             <li key={city.link}>
               <NavLink to={`./${city.link}`}>{city.name}</NavLink>

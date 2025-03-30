@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
-import { useAuthContext } from '../context/authContext';
+import { useAuthContext } from '../context/AuthContext';
 
-export default function UserInfo() {
+function UserInfo() {
   const { userData, signOut } = useAuthContext();
   const navigate = useNavigate();
 
@@ -19,3 +19,5 @@ export default function UserInfo() {
     </div>
   ) : null;
 }
+
+export default UserInfo;

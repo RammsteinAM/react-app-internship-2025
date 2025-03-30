@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router';
 import UserInfo from './UserInfo';
 import CartButton from '../components/CartButton';
-import { useAuthContext } from '../context/authContext';
+import { useAuthContext } from '../context/AuthContext';
 
 function AppNav() {
   const { userData } = useAuthContext();
@@ -11,6 +11,9 @@ function AppNav() {
       <nav>
         <NavLink to="/" end>
           Home
+        </NavLink>
+        <NavLink to="/react-query" end>
+          React Query
         </NavLink>
         <NavLink to="/about" end>
           About

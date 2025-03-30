@@ -7,13 +7,13 @@ import {
 } from '../constants/login';
 import { checkLogin, isPasswordCorrect, signOut } from '../utils/loginUtils';
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 export function useAuthContext() {
   return useContext(AuthContext);
 }
 
-export function useProvideAuth() {
+export function useAuthProvider() {
   const [userData, setUserData] = useState(checkLogin());
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ export function useProvideAuth() {
   };
 
   const signIn = ({ username, password }) => {
-    const user = userCredentials.find(user => user.username === username);
+    const user = userCredentials.find((user) => user.username === username);
 
     if (!user) {
       return { hasError: true, message: LOGIN_ERROR_MESSAGE };

@@ -5,7 +5,7 @@ import './index.css';
 import useCartStore from '../store/cartStore';
 
 export default function CartButton() {
-  const items = useCartStore(state => state.items);
+  const items = useCartStore((state) => state.items);
   const navigate = useNavigate();
 
   return (

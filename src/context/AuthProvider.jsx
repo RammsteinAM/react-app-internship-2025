@@ -1,9 +1,9 @@
-import { AuthContext, useProvideAuth } from './authContext';
+import { AuthContext, useAuthProvider } from './AuthContext';
 
 function AuthProvider({ children }) {
-  const auth = useProvideAuth();
+  const auth = useAuthProvider();
 
-  return <AuthContext value={auth}>{children}</AuthContext>;
+  return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 }
 
 export default AuthProvider;

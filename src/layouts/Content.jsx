@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Artists from '../pages/Artists';
 import Artist from '../pages/Artist';
 import Cart from '../pages/Cart';
+import ReactQuery from '../pages/ReactQuery';
 
 function Content() {
   return (
@@ -11,6 +12,7 @@ function Content() {
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="cart" element={<Cart />} />
+      <Route path="react-query" element={<ReactQuery />} />
 
       <Route path="artists">
         <Route index element={<Artists />} />

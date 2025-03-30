@@ -1,7 +1,7 @@
 import useCartStore from '../store/cartStore';
 import { formatPrice } from '../utils/priceFormatter';
 
-function Cart() {
+function ReactQuery() {
   const items = useCartStore((state) => state.items);
   const total = useCartStore((state) => state.getTotal());
 
@@ -27,4 +27,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default ReactQuery;
