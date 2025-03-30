@@ -5,6 +5,8 @@ import Artists from '../pages/Artists';
 import Artist from '../pages/Artist';
 import Cart from '../pages/Cart';
 import ReactQuery from '../pages/ReactQuery';
+import Query from '../pages/Query';
+import OptimisticUpdate from '../pages/OptimisticUpdate';
 
 function Content() {
   return (
@@ -12,7 +14,10 @@ function Content() {
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="cart" element={<Cart />} />
-      <Route path="react-query" element={<ReactQuery />} />
+      <Route path="react-query" element={<ReactQuery />}>
+        <Route path="query" index element={<Query />} />
+        <Route path="optimistic" element={<OptimisticUpdate />} />
+      </Route>
 
       <Route path="artists">
         <Route index element={<Artists />} />

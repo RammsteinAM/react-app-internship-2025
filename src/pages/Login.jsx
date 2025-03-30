@@ -22,8 +22,8 @@ function Login() {
       <div className="login-box">
         <h2 className="login-title">Login</h2>
         <form onSubmit={handleSubmit} ref={formRef} autoComplete="off">
-          <div className="login-form-group">
-            <label htmlFor="username" className="login-form-label">
+          <div className="form-group">
+            <label htmlFor="username" className="form-label">
               Username:
             </label>
             <input
@@ -31,11 +31,11 @@ function Login() {
               id="username"
               name="username"
               required
-              className="login-form-input"
+              className="form-input"
             />
           </div>
-          <div className="login-form-group">
-            <label htmlFor="password" className="login-form-label">
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">
               Password:
             </label>
             <input
@@ -43,10 +43,10 @@ function Login() {
               id="password"
               name="password"
               required
-              className="login-form-input"
+              className="form-input"
             />
           </div>
-          <button type="submit" className="login-submit-button">
+          <button type="submit" className="submit-button">
             Login
           </button>
         </form>

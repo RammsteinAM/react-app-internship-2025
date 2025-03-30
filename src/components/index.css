@@ -13,22 +13,22 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.login-form-group {
+.form-group {
   margin-bottom: 15px;
 }
 
-.login-form-label {
+.form-label {
   display: block;
   margin-bottom: 5px;
 }
 
-.login-form-input {
+.form-input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
 }
 
-.login-submit-button {
+.submit-button {
   width: 100%;
   padding: 10px;
   background-color: #007BFF;
