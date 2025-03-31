@@ -1,7 +1,14 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { NavLink, Outlet } from 'react-router';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient(/* {
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus:
+    }
+  }
+} */);
 
 function ReactQuery() {
   return (
@@ -17,6 +24,7 @@ function ReactQuery() {
 
       <QueryClientProvider client={queryClient}>
         <Outlet />
+        <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </>
   );

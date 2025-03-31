@@ -33,7 +33,7 @@ function Query() {
     onError: (err, newUser, context) => {
       queryClient.setQueryData(['users'], context.previousData);
     },
-    onSettled: (newUser) => {
+    onSettled: () => {
       // queryClient.invalidateQueries({ queryKey: ['users'] });
       queryClient.setQueryData(['users'], (users) => users);
     },
