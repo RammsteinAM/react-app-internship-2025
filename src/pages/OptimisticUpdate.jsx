@@ -5,7 +5,7 @@ function Query() {
   const { data, isLoading, error } = useQuery({
     queryKey: ['users'],
     queryFn: getUsers,
-    staleTime: 10000,
+    staleTime: 5000,
   });
 
   const queryClient = useQueryClient();
@@ -13,7 +13,6 @@ function Query() {
   const mutation = useMutation({
     mutationFn: insertUser,
     onMutate: async (newUser) => {
-      console.log('🫠 > onMutate: > newUser:', newUser);
       await queryClient.cancelQueries({ queryKey: ['users'] });
 
       const previousData = queryClient.getQueryData(['users']);
@@ -23,6 +22,7 @@ function Query() {
           ...currentUsers,
           {
             ...newUser,
+            // For demo (kind of unique ID)
             id: Math.max(...currentUsers.map((user) => user.id)) + 1,
           },
         ];
@@ -34,8 +34,8 @@ function Query() {
       queryClient.setQueryData(['users'], context.previousData);
     },
     onSettled: () => {
+      // Disabled for demo
       // queryClient.invalidateQueries({ queryKey: ['users'] });
-      queryClient.setQueryData(['users'], (users) => users);
     },
   });
 
@@ -91,7 +91,6 @@ function Query() {
             <input
               id="email"
               name="email"
-              type="email"
               placeholder="Email"
               className="form-input"
               required

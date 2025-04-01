@@ -5,7 +5,7 @@ import { NavLink, Outlet } from 'react-router';
 const queryClient = new QueryClient(/* {
   defaultOptions: {
     queries: {
-      refetchOnWindowFocus:
+      refetchOnWindowFocus: false
     }
   }
 } */);

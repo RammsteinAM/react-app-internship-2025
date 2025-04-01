@@ -2,10 +2,18 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getUsers, insertUser } from '../api/users';
 
 function Query() {
-  const { data, isLoading, error } = useQuery({
+  const {
+    data = [],
+    isLoading,
+    error,
+    // isFetching,
+    // isPending,
+  } = useQuery({
     queryKey: ['users'],
     queryFn: getUsers,
-    staleTime: 10000,
+    // staleTime: 5000,
+    // enabled: false,
+    // retry: 3,
   });
 
   const queryClient = useQueryClient();
@@ -13,8 +21,19 @@ function Query() {
   const mutation = useMutation({
     mutationFn: insertUser,
     onSuccess: (newUser) => {
-      queryClient.setQueryData(['users'], [...data, newUser.data]);
-      // Invalidate and refetch users query after successful mutation
+      // Added of demo
+      queryClient.setQueryData(['users'], (currentUsers) => {
+        return [
+          ...currentUsers,
+          {
+            ...newUser.data,
+            id: Math.max(...currentUsers.map((user) => user.id)) + 1,
+          },
+        ];
+      });
+
+      // Disabled for demo
+      // // Invalidate and refetch users query after successful mutation
       // queryClient.invalidateQueries({ queryKey: ['users'] });
     },
   });
