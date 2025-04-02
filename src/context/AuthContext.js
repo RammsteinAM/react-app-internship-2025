@@ -30,7 +30,7 @@ export function useAuthProvider() {
   }, []);
 
   const handleSignOut = () => {
-    setUserData(false);
+    setUserData(null);
     signOut();
   };
 
